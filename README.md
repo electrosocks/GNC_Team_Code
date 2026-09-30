@@ -16,9 +16,6 @@ Shared utilities, models, and reusable code.
 ### docs
 Project documentation, team structure, and technical resources.
 
-### presentations
-Team presentations and briefings.
-
 ### archive
 Older or inactive work retained for reference.
 
