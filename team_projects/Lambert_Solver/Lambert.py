@@ -1,136 +1,99 @@
 import numpy as np
-
-# =======================================================
-#                   Stumpff Functions
-# =======================================================
-def stump_s(z: float) -> float:
-    if z > 0:
-        sz = np.sqrt(z)
-        return (sz - np.sin(sz)) / (sz ** 3)
-    elif z < 0:
-        sz = np.sqrt(-z)
-        return (np.sinh(sz) - sz) / (sz ** 3)
-    else:
-        return 1.0 / 6.0
+from Lambert_helpers import y, solve_z
 
 
-def stump_c(z: float) -> float:
-    if z > 0:
-        sz = np.sqrt(z)
-        return (1.0 - np.cos(sz)) / z
-    elif z < 0:
-        sz = np.sqrt(-z)
-        return (np.cosh(sz) - 1.0) / (-z)
-    else:
-        return 0.5
 
-# =======================================================
-#                   Lambert Solver
-# =======================================================
-def solve_lambert(R1, R2, t, mu, trajectory="pro"):
+def solve_lambert(R1, R2, t, mu, orbit_type="pro"):
     """
-    Solves Lambert's problem for orbital transfer.
+    Solve Lambert's orbital boundary-value problem.
 
-    Inputs:
-    - R1: Initial position vector (km)
-    - R2: Final position vector (km)
-    - t: Time of flight from R1 to R2 (seconds)
-    - mu: Gravitational parameter (km^3/s^2)
-    - trajectory: 'pro' for prograde, 'retro' for retrograde
+    Parameters
+    ----------
+    R1 : array_like
+        Initial position vector [km].
+    R2 : array_like
+        Final position vector [km].
+    t : float
+        Time of flight [s].
+    mu : float
+        Gravitational parameter [km^3/s^2].
+    orbit_type : str
+        'pro' for prograde or 'retro' for retrograde.
 
-    Outputs:
-    - V1: Initial velocity vector (km/s)
-    - V2: Final velocity vector (km/s)
+    Returns
+    -------
+    V1 : ndarray
+        Initial velocity vector [km/s].
+    V2 : ndarray
+        Final velocity vector [km/s].
     """
     R1 = np.asarray(R1, dtype=float)
     R2 = np.asarray(R2, dtype=float)
 
+    if R1.shape != (3,) or R2.shape != (3,):
+        raise ValueError("R1 and R2 must be three-dimensional vectors.")
+    if not np.all(np.isfinite(R1)) or not np.all(np.isfinite(R2)):
+        raise ValueError("Position vectors must contain finite values.")
+    if not np.isfinite(t) or t <= 0:
+        raise ValueError("Time of flight t must be positive and finite.")
+    if not np.isfinite(mu) or mu <= 0:
+        raise ValueError("Gravitational parameter mu must be positive.")
+    if np.linalg.norm(R1) == 0 or np.linalg.norm(R2) == 0:
+        raise ValueError("Position vector magnitudes must be nonzero.")
+
+    orbit_type = orbit_type.lower()
+    if orbit_type not in ("pro", "retro"):
+        print("** Prograde trajectory assumed.")
+        orbit_type = "pro"
+
+    # Magnitudes of R1 and R2
     r1 = np.linalg.norm(R1)
     r2 = np.linalg.norm(R2)
+
+    # Cross product and transfer angle
     c12 = np.cross(R1, R2)
 
-    # Angle between R1 and R2
-    dot_val = np.dot(R1, R2) / (r1 * r2)
-    # Clip to avoid numerical issues with acos outside [-1, 1]
-    theta = np.arccos(np.clip(dot_val, -1.0, 1.0))
+    cos_theta = np.dot(R1, R2) / (r1 * r2)
+    cos_theta = np.clip(cos_theta, -1.0, 1.0)
+    theta = np.arccos(cos_theta)
 
-    # Determine whether the orbit is prograde or retrograde
-    if trajectory == "pro":
+    # Determine prograde or retrograde direction
+    if orbit_type == "pro":
         if c12[2] <= 0:
-            theta = 2 * np.pi - theta
-    elif trajectory == "retro":
+            theta = 2.0 * np.pi - theta
+    else:  # retrograde
         if c12[2] >= 0:
-            theta = 2 * np.pi - theta
-    else:
-        trajectory = "pro"
-        print("\n ** Prograde trajectory assumed.\n")
+            theta = 2.0 * np.pi - theta
 
-    # Equation 5.35:
-    A = np.sin(theta) * np.sqrt(r1 * r2 / (1.0 - np.cos(theta)))
+    # Equation 5.35
+    denominator = 1.0 - np.cos(theta)
+    if denominator <= 0:
+        raise ValueError(
+            "Transfer angle is degenerate; Lambert's solution "
+            "cannot be computed with this formulation."
+        )
 
-    # Helper functions using closures for r1, r2, A, mu, t
-    def C(z):
-        return stump_c(z)
+    A = np.sin(theta) * np.sqrt(r1 * r2 / denominator)
 
-    def S(z):
-        return stump_s(z)
+    if abs(A) < 1e-14:
+        raise ValueError(
+            "A is approximately zero; the transfer geometry is "
+            "singular for this formulation."
+        )
 
-    def y(z):
-        c_z = C(z)
-        s_z = S(z)
-        return r1 + r2 + A * (z * s_z - 1.0) / np.sqrt(c_z)
+    z = solve_z(t, r1, r2, A, mu)
 
-    def F(z):
-        c_z = C(z)
-        s_z = S(z)
-        yz = y(z)
-        return (yz / c_z) ** 1.5 * s_z + A * np.sqrt(yz) - np.sqrt(mu) * t
-
-    def dFdz(z):
-        c_z = C(z)
-        s_z = S(z)
-        yz = y(z)
-        if z == 0:
-            y0 = y(0.0)
-            return (
-                np.sqrt(2.0) / 40.0 * (y0 ** 1.5)
-                + A / 8.0 * (np.sqrt(y0) + A * np.sqrt(1.0 / (2.0 * y0)))
-            )
-        else:
-            term1 = (yz / c_z) ** 1.5
-            term2 = (1.0 / (2.0 * z)) * (c_z - (3.0 * s_z) / (2.0 * c_z))
-            term3 = (2.0 * (s_z ** 2)) / (4.0 * c_z)
-            term4 = (A / 8.0) * ((3.0 * s_z / c_z) * np.sqrt(yz))
-            term5 = A * np.sqrt(c_z / yz)
-            return term1 * (term2 + term3) + term4 + term5
-
-    # Determine starting value for z where F(z, t) changes sign
-    z = -100.0
-    while F(z) < 0:
-        z += 0.1
-
-    # Newton's method iteration
-    tol = 1.0e-8
-    nmax = 5000
-    ratio = 1.0
-    n = 0
-
-    while (abs(ratio) > tol) and (n <= nmax):
-        n += 1
-        ratio = F(z) / dFdz(z)
-        z -= ratio
-
-    if n >= nmax:
-        print(f"\n\n **Number of iterations exceeds  {nmax} \n\n")
-
-    # Lagrange coefficients
-    yz = y(z)
+    # Lagrange coefficients (Equations 5.46a, 5.46b, 5.46d)
+    yz = y(z, r1, r2, A)
     f = 1.0 - yz / r1
     g = A * np.sqrt(yz / mu)
     gdot = 1.0 - yz / r2
 
-    # Velocity vectors (Equations 5.28 and 5.29)
-    V1 = (1.0 / g) * (R2 - f * R1)
-    V2 = (1.0 / g) * (gdot * R2 - R1)
+    if abs(g) < 1e-14:
+        raise RuntimeError("Lagrange coefficient g is approximately zero.")
+
+    # Initial and final velocity vectors (Equations 5.28 and 5.29)
+    V1 = (R2 - f * R1) / g
+    V2 = (gdot * R2 - R1) / g
 
     return V1, V2
