@@ -1,0 +1,34 @@
+Run c2dd5f430fc6 | 2026-10-23T20:14:22.805506+00:00
+400 -> 500 km
+ID  Method          Status   Delta-v (m/s)  Time (min)  Arrival (deg)  Burns
+0   Hohmann         PASS        55.949252   46.793235     180.000000      2
+1   Bielliptic      PASS       786.455823  109.964047     360.000000      3
+2   Lambert         PASS      3676.878428   30.000000      90.000000      2
+3   CW targeting    PASS       143.329389   46.793235     178.040831      2
+
+{
+  "schema_version": 2,
+  "run_id": "c2dd5f430fc6",
+  "generated_at_utc": "2026-10-23T20:14:22.805506+00:00",
+  "scenario": "Level 0 manual capability comparison",
+  "output_directory": "C:\\Users\\Braden Farrell\\OneDrive\\School\\ASTRO Lab\\maneuver-planner\\comparison_results",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "frame": "ECI",
+  "initial_altitude_km": 400.0,
+  "target_altitude_km": 500.0,
+  "initial_radius_m": 6778137.0,
+  "target_radius_m": 6878137.0,
+  "inclination_deg": 0.0,
+  "settings": {
+    "intermediate_radius_m": 8378137.0,
+    "lambert_angle_deg": 90.0,
+    "lambert_tof_s": 1800,
+    "cw_tof_s": null
+  },
+  "cw_nonlinear_correction": true,
+  "verification_duration_s": 5676.9780285258585
+}

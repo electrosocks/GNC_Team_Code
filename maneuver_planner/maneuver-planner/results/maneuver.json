@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "tool_name": "hohmann",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "velocity": "m/s"
+  },
+  "epoch_reference": "seconds relative to the caller's common origin",
+  "frame": "ECI",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "initial_state": {
+    "epoch_s": 0.0,
+    "position_m": [
+      6778137.0,
+      0.0,
+      0.0
+    ],
+    "velocity_m_s": [
+      -0.0,
+      7668.558175407055,
+      0.0
+    ]
+  },
+  "burns": [
+    {
+      "epoch_s": 0.0,
+      "delta_v_m_s": [
+        -0.0,
+        28.02583931440977,
+        0.0
+      ],
+      "frame": "ECI"
+    },
+    {
+      "epoch_s": 2807.5941199195818,
+      "delta_v_m_s": [
+        0.0,
+        -27.92341283132282,
+        -0.0
+      ],
+      "frame": "ECI"
+    }
+  ],
+  "end_epoch_s": 2807.5941199195818,
+  "predicted_duration_s": 2807.5941199195818,
+  "predicted_total_delta_v_m_s": 55.949252145732586,
+  "description": "Circular initial orbit; request preserves its plane and direction."
+}

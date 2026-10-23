@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "tool_name": "bielliptic",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "velocity": "m/s"
+  },
+  "epoch_reference": "seconds relative to the caller's common origin",
+  "frame": "ECI",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "initial_state": {
+    "epoch_s": 0.0,
+    "position_m": [
+      6778137.0,
+      0.0,
+      0.0
+    ],
+    "velocity_m_s": [
+      -0.0,
+      7668.558175407055,
+      0.0
+    ]
+  },
+  "burns": [
+    {
+      "epoch_s": 0.0,
+      "delta_v_m_s": [
+        -0.0,
+        394.6193051894088,
+        0.0
+      ],
+      "frame": "ECI"
+    },
+    {
+      "epoch_s": 3282.6506281848397,
+      "delta_v_m_s": [
+        0.0,
+        -26.372466424958475,
+        -0.0
+      ],
+      "frame": "ECI"
+    },
+    {
+      "epoch_s": 6597.842823262766,
+      "delta_v_m_s": [
+        0.0,
+        -365.4640512075266,
+        -0.0
+      ],
+      "frame": "ECI"
+    }
+  ],
+  "end_epoch_s": 6597.842823262766,
+  "predicted_duration_s": 6597.842823262766,
+  "predicted_total_delta_v_m_s": 786.4558228218939,
+  "description": "Intermediate apoapsis radius 8.37814e+06 m."
+}

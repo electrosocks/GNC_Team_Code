@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "run_id": "c2dd5f430fc6",
+  "generated_at_utc": "2026-10-23T20:14:22.805506+00:00",
+  "scenario": "Level 0 manual capability comparison",
+  "output_directory": "C:\\Users\\Braden Farrell\\OneDrive\\School\\ASTRO Lab\\maneuver-planner\\comparison_results",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "frame": "ECI",
+  "initial_altitude_km": 400.0,
+  "target_altitude_km": 500.0,
+  "initial_radius_m": 6778137.0,
+  "target_radius_m": 6878137.0,
+  "inclination_deg": 0.0,
+  "settings": {
+    "intermediate_radius_m": 8378137.0,
+    "lambert_angle_deg": 90.0,
+    "lambert_tof_s": 1800,
+    "cw_tof_s": null
+  },
+  "cw_nonlinear_correction": true,
+  "verification_duration_s": 5676.9780285258585,
+  "status": "PASS",
+  "methods": [
+    {
+      "method_id": 0,
+      "method": "Hohmann",
+      "status": "PASS",
+      "total_delta_v_m_s": 55.949252145732316,
+      "transfer_duration_s": 2807.5941199195818,
+      "arrival_angle_deg": 180.0,
+      "burn_count": 2,
+      "max_altitude_error_m": 1.538824290037155e-05,
+      "note": ""
+    },
+    {
+      "method_id": 1,
+      "method": "Bielliptic",
+      "status": "PASS",
+      "total_delta_v_m_s": 786.4558228218939,
+      "transfer_duration_s": 6597.842823262766,
+      "arrival_angle_deg": 360.0,
+      "burn_count": 3,
+      "max_altitude_error_m": 2.755783498287201e-05,
+      "note": ""
+    },
+    {
+      "method_id": 2,
+      "method": "Lambert",
+      "status": "PASS",
+      "total_delta_v_m_s": 3676.8784277410596,
+      "transfer_duration_s": 1800.0,
+      "arrival_angle_deg": 90.0,
+      "burn_count": 2,
+      "max_altitude_error_m": 1.221243292093277e-05,
+      "note": ""
+    },
+    {
+      "method_id": 3,
+      "method": "CW targeting",
+      "status": "PASS",
+      "total_delta_v_m_s": 143.32938921635454,
+      "transfer_duration_s": 2807.5941199195818,
+      "arrival_angle_deg": 178.04083054263762,
+      "burn_count": 2,
+      "max_altitude_error_m": 1.3394281268119812e-05,
+      "note": "CW + two-body correction"
+    }
+  ]
+}

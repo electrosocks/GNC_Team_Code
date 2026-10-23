@@ -1,0 +1,24 @@
+Run c2dd5f430fc6 | 2026-10-23T20:14:22.805506+00:00
+Method 1: Bielliptic; arrival angle 360.000000 deg
+Circular transfer: PASS
+  departure_delta_v_m_s: 394.6193052
+  arrival_delta_v_m_s: 365.4640512
+  total_delta_v_m_s: 786.4558228
+  transfer_duration_s: 6597.842823
+  terminal_altitude_m: 500000
+  terminal_eccentricity: 2.414003348e-12
+Checks (measured error <= allowed error):
+  PASS  target semimajor axis: 1.672e-06 <= 1.000e+00 m
+  PASS  terminal orbit apsides: 1.828e-05 <= 1.000e+00 m
+  PASS  sampled altitude during verification: 2.756e-05 <= 1.000e+00 m
+  PASS  terminal eccentricity: 2.414e-12 <= 1.000e-07 
+  PASS  orbital plane preservation: 0.000e+00 <= 1.000e-08 rad
+  PASS  coast energy conservation: 4.602e-12 <= 1.000e-09 relative
+  PASS  coast angular momentum conservation: 2.455e-12 <= 1.000e-09 relative
+  PASS  total applied versus commanded delta-v: 0.000e+00 <= 1.000e-06 m/s
+  PASS  scheduled mission end: 0.000e+00 <= 1.000e-06 s
+  PASS  position continuity at burns: 0.000e+00 <= 1.000e+00 m
+  PASS  applied burn vectors: 0.000e+00 <= 1.000e-03 m/s
+  PASS  no sampled central-body intersection: 0.000e+00 <= 0.000e+00 m
+  PASS  method arrival position: 8.816e-05 <= 1.000e+00 m
+  PASS  method arrival velocity: 7.957e-08 <= 1.000e-03 m/s

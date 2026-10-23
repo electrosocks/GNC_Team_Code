@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "run_id": "c2dd5f430fc6",
+  "generated_at_utc": "2026-10-23T20:14:22.805506+00:00",
+  "scenario": "Level 0 manual capability comparison",
+  "output_directory": "C:\\Users\\Braden Farrell\\OneDrive\\School\\ASTRO Lab\\maneuver-planner\\comparison_results",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "frame": "ECI",
+  "initial_altitude_km": 400.0,
+  "target_altitude_km": 500.0,
+  "initial_radius_m": 6778137.0,
+  "target_radius_m": 6878137.0,
+  "inclination_deg": 0.0,
+  "settings": {
+    "intermediate_radius_m": 8378137.0,
+    "lambert_angle_deg": 90.0,
+    "lambert_tof_s": 1800,
+    "cw_tof_s": null
+  },
+  "cw_nonlinear_correction": true,
+  "verification_duration_s": 5676.9780285258585,
+  "method": {
+    "method_id": 1,
+    "name": "Bielliptic",
+    "source": "bielliptic_tool.py"
+  },
+  "arrival_angle_deg": 360.0,
+  "passed": true,
+  "metrics": {
+    "departure_delta_v_m_s": 394.6193051894088,
+    "arrival_delta_v_m_s": 365.4640512075266,
+    "total_delta_v_m_s": 786.4558228218939,
+    "transfer_duration_s": 6597.842823262766,
+    "terminal_altitude_m": 500000.0000015348,
+    "terminal_semimajor_axis_m": 6878136.999998328,
+    "terminal_eccentricity": 2.414003347882052e-12,
+    "terminal_inclination_rad": 0.0,
+    "max_altitude_error_m": 2.755783498287201e-05,
+    "terminal_orbit_apsis_error_m": 1.827627420425415e-05,
+    "max_energy_relative_drift": 4.602469270395212e-12,
+    "max_angular_momentum_relative_drift": 2.4547986994789853e-12,
+    "minimum_sampled_altitude_m": 400000.0
+  },
+  "checks": [
+    {
+      "name": "target semimajor axis",
+      "measured_error": 1.671724021434784e-06,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal orbit apsides",
+      "measured_error": 1.827627420425415e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "sampled altitude during verification",
+      "measured_error": 2.755783498287201e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal eccentricity",
+      "measured_error": 2.414003347882052e-12,
+      "allowed_error": 1e-07,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "orbital plane preservation",
+      "measured_error": 0.0,
+      "allowed_error": 1e-08,
+      "unit": "rad",
+      "passed": true
+    },
+    {
+      "name": "coast energy conservation",
+      "measured_error": 4.602469270395212e-12,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "coast angular momentum conservation",
+      "measured_error": 2.4547986994789853e-12,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "total applied versus commanded delta-v",
+      "measured_error": 0.0,
+      "allowed_error": 1e-06,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "scheduled mission end",
+      "measured_error": 0.0,
+      "allowed_error": 1e-06,
+      "unit": "s",
+      "passed": true
+    },
+    {
+      "name": "position continuity at burns",
+      "measured_error": 0.0,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "applied burn vectors",
+      "measured_error": 0.0,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "no sampled central-body intersection",
+      "measured_error": 0.0,
+      "allowed_error": 0.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "method arrival position",
+      "measured_error": 8.815827013811769e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "method arrival velocity",
+      "measured_error": 7.956983224345975e-08,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    }
+  ]
+}

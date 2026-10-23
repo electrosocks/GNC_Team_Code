@@ -1,0 +1,44 @@
+{
+  "model": "linear CW about a circular virtual reference at the target radius",
+  "mean_motion_rad_s": 0.0011067834463349404,
+  "initial_relative_state_hill": [
+    -100000.0,
+    0.0,
+    0.0,
+    0.0,
+    166.62834681668133,
+    0.0
+  ],
+  "initial_separation_to_reference_radius_ratio": 0.014538820613779575,
+  "cw_predicted_terminal_position_error_m": 1.1641532182693481e-10,
+  "targeting_condition_number": 312.58920133525,
+  "reference_arrival_position_m": [
+    -6874116.34093139,
+    235144.89598760972,
+    0.0
+  ],
+  "reference_arrival_velocity_m_s": [
+    -260.2544783692378,
+    -7608.158174323375,
+    0.0
+  ],
+  "raw_cw_delta_v_m_s": 142.5385099994245,
+  "nonlinear_correction": {
+    "enabled": true,
+    "applied": true,
+    "iterations": 5,
+    "position_errors_m": [
+      9390.065674454121,
+      73.58050308350246,
+      0.3097543887366747,
+      0.002674384530204373,
+      1.1347381961469286e-05,
+      1.0849955225437445e-07
+    ],
+    "position_tolerance_m": 1e-05,
+    "raw_two_body_position_error_m": 9390.065674454121,
+    "raw_two_body_velocity_error_m_s": 10.057258000064396,
+    "departure_delta_v_change_m_s": 0.9799508335350783,
+    "arrival_burn_source": "circular reference velocity minus nonlinear predicted arrival velocity"
+  }
+}

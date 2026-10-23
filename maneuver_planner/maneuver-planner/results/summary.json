@@ -1,0 +1,142 @@
+{
+  "scenario": "circular Hohmann transfer",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "initial_radius_m": 6778137.0,
+  "target_radius_m": 6878137.0,
+  "frame": "ECI",
+  "integrator": {
+    "method": "DOP853",
+    "rtol": 1e-11,
+    "position_atol_m": 1e-05,
+    "velocity_atol_m_s": 1e-08,
+    "max_step_s": null,
+    "max_step_null_means": "unbounded",
+    "sample_step_s": 30.0
+  },
+  "tolerances": {
+    "position_m": 1.0,
+    "velocity_m_s": 0.001,
+    "altitude_m": 1.0,
+    "eccentricity": 1e-07,
+    "plane_angle_rad": 1e-08,
+    "conservation_relative": 1e-09,
+    "delta_v_m_s": 1e-06,
+    "duration_s": 1e-06
+  },
+  "verification_duration_s": 5676.9780285258585,
+  "passed": true,
+  "metrics": {
+    "departure_delta_v_m_s": 28.025839314409495,
+    "arrival_delta_v_m_s": 27.92341283132282,
+    "total_delta_v_m_s": 55.949252145732316,
+    "expected_total_delta_v_m_s": 55.9492521457305,
+    "transfer_duration_s": 2807.5941199195818,
+    "expected_transfer_duration_s": 2807.5941199195818,
+    "terminal_altitude_m": 500000.0000380073,
+    "target_altitude_m": 500000.0,
+    "terminal_semimajor_axis_m": 6878137.000003854,
+    "terminal_eccentricity": 5.082684370679616e-12,
+    "terminal_inclination_rad": 0.0,
+    "max_altitude_error_m": 0.00014411844313144684,
+    "terminal_orbit_apsis_error_m": 3.881286829710007e-05,
+    "max_energy_relative_drift": 3.185734569556254e-11,
+    "max_angular_momentum_relative_drift": 1.5968516916421562e-11
+  },
+  "checks": [
+    {
+      "name": "terminal position",
+      "measured_error": 0.00010693855102257727,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal velocity",
+      "measured_error": 1.2541893914466456e-07,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "target semimajor axis",
+      "measured_error": 3.85381281375885e-06,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "sampled altitude during verification",
+      "measured_error": 0.00014411844313144684,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal orbit apsides",
+      "measured_error": 3.881286829710007e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal eccentricity",
+      "measured_error": 5.082684370679616e-12,
+      "allowed_error": 1e-07,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "orbital plane preservation",
+      "measured_error": 0.0,
+      "allowed_error": 1e-08,
+      "unit": "rad",
+      "passed": true
+    },
+    {
+      "name": "coast energy conservation",
+      "measured_error": 3.185734569556254e-11,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "coast angular momentum conservation",
+      "measured_error": 1.5968516916421562e-11,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "total applied delta-v",
+      "measured_error": 1.8189894035458565e-12,
+      "allowed_error": 1e-06,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "transfer duration",
+      "measured_error": 0.0,
+      "allowed_error": 1e-06,
+      "unit": "s",
+      "passed": true
+    },
+    {
+      "name": "position continuity at burns",
+      "measured_error": 0.0,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "applied burn vectors",
+      "measured_error": 2.7355895326763857e-13,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    }
+  ]
+}

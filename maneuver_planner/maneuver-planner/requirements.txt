@@ -1,0 +1,3 @@
+# Run from the project root. Installs this package in editable mode with the demo
+# and test dependencies. A guidance-only user can instead run: pip install -e .
+-e .[simulation,test]

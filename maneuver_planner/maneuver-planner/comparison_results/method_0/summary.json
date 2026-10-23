@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "run_id": "c2dd5f430fc6",
+  "generated_at_utc": "2026-10-23T20:14:22.805506+00:00",
+  "scenario": "Level 0 manual capability comparison",
+  "output_directory": "C:\\Users\\Braden Farrell\\OneDrive\\School\\ASTRO Lab\\maneuver-planner\\comparison_results",
+  "central_body": {
+    "name": "Earth",
+    "mu_m3_s2": 398600441800000.0,
+    "radius_m": 6378137.0
+  },
+  "frame": "ECI",
+  "initial_altitude_km": 400.0,
+  "target_altitude_km": 500.0,
+  "initial_radius_m": 6778137.0,
+  "target_radius_m": 6878137.0,
+  "inclination_deg": 0.0,
+  "settings": {
+    "intermediate_radius_m": 8378137.0,
+    "lambert_angle_deg": 90.0,
+    "lambert_tof_s": 1800,
+    "cw_tof_s": null
+  },
+  "cw_nonlinear_correction": true,
+  "verification_duration_s": 5676.9780285258585,
+  "method": {
+    "method_id": 0,
+    "name": "Hohmann",
+    "source": "hohmann_tool.py"
+  },
+  "arrival_angle_deg": 180.0,
+  "passed": true,
+  "metrics": {
+    "departure_delta_v_m_s": 28.025839314409495,
+    "arrival_delta_v_m_s": 27.92341283132282,
+    "total_delta_v_m_s": 55.949252145732316,
+    "transfer_duration_s": 2807.5941199195818,
+    "terminal_altitude_m": 500000.0000038119,
+    "terminal_semimajor_axis_m": 6878137.000000412,
+    "terminal_eccentricity": 5.038904772337866e-13,
+    "terminal_inclination_rad": 0.0,
+    "max_altitude_error_m": 1.538824290037155e-05,
+    "terminal_orbit_apsis_error_m": 3.877095878124237e-06,
+    "max_energy_relative_drift": 3.363830209018398e-12,
+    "max_angular_momentum_relative_drift": 1.6854763024247506e-12,
+    "minimum_sampled_altitude_m": 400000.0
+  },
+  "checks": [
+    {
+      "name": "target semimajor axis",
+      "measured_error": 4.116445779800415e-07,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal orbit apsides",
+      "measured_error": 3.877095878124237e-06,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "sampled altitude during verification",
+      "measured_error": 1.538824290037155e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "terminal eccentricity",
+      "measured_error": 5.038904772337866e-13,
+      "allowed_error": 1e-07,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "orbital plane preservation",
+      "measured_error": 0.0,
+      "allowed_error": 1e-08,
+      "unit": "rad",
+      "passed": true
+    },
+    {
+      "name": "coast energy conservation",
+      "measured_error": 3.363830209018398e-12,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "coast angular momentum conservation",
+      "measured_error": 1.6854763024247506e-12,
+      "allowed_error": 1e-09,
+      "unit": "relative",
+      "passed": true
+    },
+    {
+      "name": "total applied versus commanded delta-v",
+      "measured_error": 2.7000623958883807e-13,
+      "allowed_error": 1e-06,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "scheduled mission end",
+      "measured_error": 0.0,
+      "allowed_error": 1e-06,
+      "unit": "s",
+      "passed": true
+    },
+    {
+      "name": "position continuity at burns",
+      "measured_error": 0.0,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "applied burn vectors",
+      "measured_error": 2.7355895326763857e-13,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    },
+    {
+      "name": "no sampled central-body intersection",
+      "measured_error": 0.0,
+      "allowed_error": 0.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "method arrival position",
+      "measured_error": 1.0938064238550864e-05,
+      "allowed_error": 1.0,
+      "unit": "m",
+      "passed": true
+    },
+    {
+      "name": "method arrival velocity",
+      "measured_error": 1.2734570124690408e-08,
+      "allowed_error": 0.001,
+      "unit": "m/s",
+      "passed": true
+    }
+  ]
+}
