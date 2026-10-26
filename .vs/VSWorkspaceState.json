@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\maneuver_planner",
+    "\\maneuver_planner\\maneuver-planner",
+    "\\maneuver_planner\\maneuver-planner\\tests"
+  ],
+  "SelectedNode": "\\maneuver_planner\\maneuver-planner\\tests\\test_comparison.py",
+  "PreviewInSolutionExplorer": false
+}
